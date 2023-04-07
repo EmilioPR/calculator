@@ -1,8 +1,8 @@
 package org.prueba.sanitas.calculadora.controller;
 
-import org.prueba.sanitas.calculadora.pojo.AddOperand;
+import org.prueba.sanitas.calculadora.pojo.AddOperandSet;
 import org.prueba.sanitas.calculadora.pojo.OperationOutput;
-import org.prueba.sanitas.calculadora.pojo.SubtractOperand;
+import org.prueba.sanitas.calculadora.pojo.SubtractOperandSet;
 import org.prueba.sanitas.calculadora.service.CalculatorService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,14 +21,14 @@ public class CalculatorController {
 	
 	@PostMapping("/add")
 	@ResponseBody
-	public OperationOutput add(@RequestBody AddOperand operand) {
-		return service.add(operand.getAddendList());
+	public OperationOutput add(@RequestBody AddOperandSet operandSet) {
+		return service.add(operandSet.getFirstAddend(), operandSet.getSecondAddend());
 	}
 	
 	@PostMapping("/subtract")
 	@ResponseBody
-	public OperationOutput subtract(@RequestBody SubtractOperand operand) {
-		return service.subtract(operand.getAddendList(), operand.getSubtrahendList());
+	public OperationOutput subtract(@RequestBody SubtractOperandSet operandSet) {
+		return service.subtract(operandSet.getMinuhend(), operandSet.getSubtrahend());
 	}
 	
 }

@@ -9,19 +9,28 @@ import org.springframework.stereotype.Service;
 @Service
 public class CalculatorServiceImpl implements CalculatorService {
 
+
 	@Override
-	public OperationOutput add(List<BigDecimal> addendList) {
+	public OperationOutput add(BigDecimal firstAddend, BigDecimal secondAddend) {
+		return add(List.of(firstAddend, secondAddend));
+	}
+
+	@Override
+	public OperationOutput subtract(BigDecimal minuhend, BigDecimal subtrahend) {
+		return subtract(List.of(minuhend), List.of(subtrahend));
+	}
+
+	OperationOutput add(List<BigDecimal> addendList) {
 		BigDecimal result = new BigDecimal(0);
 		
 		for (BigDecimal addend : addendList) {
 			result = result.add(addend);
 		}
 		
-		return OperationOutput.builder().value(result).build();
+		return OperationOutput.builder().name("ADD").value(result).build();
 	}
 
-	@Override
-	public OperationOutput subtract(List<BigDecimal> addendList, List<BigDecimal> subtrahendList) {
+	OperationOutput subtract(List<BigDecimal> addendList, List<BigDecimal> subtrahendList) {
 		BigDecimal result = new BigDecimal(0);
 		
 		for (BigDecimal addend : addendList) {
@@ -32,7 +41,7 @@ public class CalculatorServiceImpl implements CalculatorService {
 			result = result.subtract(subtrahend);
 		}
 		
-		return OperationOutput.builder().value(result).build();
+		return OperationOutput.builder().name("SUBTRACT").value(result).build();
 	}
 
 }

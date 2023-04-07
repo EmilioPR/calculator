@@ -1,14 +1,13 @@
 package org.prueba.sanitas.calculadora.service;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import org.prueba.sanitas.calculadora.pojo.OperationOutput;
 
 public interface CalculatorService {
 
-	OperationOutput add(List<BigDecimal> addendList);
+	OperationOutput add(BigDecimal firstAddend, BigDecimal secondAddend);
 
-	OperationOutput subtract(List<BigDecimal> addendList, List<BigDecimal> subtrahendList);
+	OperationOutput subtract(BigDecimal minuhend, BigDecimal subtrahend);
 
 }

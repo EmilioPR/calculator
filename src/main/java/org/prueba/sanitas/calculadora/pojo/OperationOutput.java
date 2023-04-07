@@ -9,6 +9,8 @@ import lombok.Data;
 @Builder
 public class OperationOutput {
 
+	private String name;
+	
 	private BigDecimal value;
 	
 }
