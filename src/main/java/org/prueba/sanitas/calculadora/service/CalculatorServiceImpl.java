@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CalculatorServiceImpl implements CalculatorService {
 
-
 	@Override
 	public OperationOutput add(BigDecimal firstAddend, BigDecimal secondAddend) {
 		return add(List.of(firstAddend, secondAddend));
